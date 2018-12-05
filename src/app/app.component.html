@@ -1,10 +1,13 @@
 <div *blockUI="'app-list'">
-  <app-table
-    *ngIf="isGtXs"
-    [data]="data"
-    [paginator]="paginator"
-    (sortChange)="sortChange(sort)"
-  ></app-table>
-  <app-card-listing *ngIf="!isGtXs" [data]="data"></app-card-listing>
+  <ng-container *ngIf="isGtXs; else: isNotGtXsTemplate">
+    <app-table
+      [data]="data"
+      [paginator]="paginator"
+      (sortChange)="sortChange(sort)"
+    ></app-table>
+  </ng-container>
+  <ng-template #isNotGtXsTemplate>
+    <app-card-listing [data]="data"></app-card-listing>
+  </ng-template>
 </div>
-<mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+<mat-paginator [showFirstLastButtons]="true" [length]="resultsLength" [pageSize]="25" [pageSizeOptions]="[5,10,25,50,100]"></mat-paginator>

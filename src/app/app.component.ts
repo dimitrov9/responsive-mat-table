@@ -17,16 +17,14 @@ import { ObservableMedia } from '@angular/flex-layout';
 export class AppComponent implements OnInit {
   exampleDatabase: ExampleHttpDao | null;
   data: GithubIssue[] = [];
-
   resultsLength = 0;
 
   isGtXs = false;
+  sort: MatSort;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(AppTableComponent) appTable: AppTableComponent;
   @BlockUI('app-list') blockUI: NgBlockUI;
-
-  sort: MatSort;
 
   constructor(private http: HttpClient, public media: ObservableMedia) {}
 
