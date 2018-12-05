@@ -1,0 +1,12 @@
+.divider {
+  width: 100%;
+}
+
+mat-list-item label {
+  font-size: 14px;
+  color: darkgrey;
+}
+
+mat-list-item p {
+  text-align: right;
+}

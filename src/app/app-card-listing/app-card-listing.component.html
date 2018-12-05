@@ -1,0 +1,42 @@
+<mat-accordion fxLayoutGap="10px" fxLayout="column" [multi]="true">
+  <ng-container *ngIf="shouldExtendAll; else: collapseAllTemplate">
+    <button mat-raised-button (click)="expandAll()" fxFlexAlign="end">
+      Expand All
+      <mat-icon class="mat-18">arrow_downward</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-template #collapseAllTemplate>
+    <button mat-raised-button (click)="collapseAll()" fxFlexAlign="end">
+      Collapse All
+      <mat-icon class="mat-18">arrow_upward</mat-icon>
+    </button>
+  </ng-template>
+
+  <mat-expansion-panel *ngFor="let element of data">
+    <mat-expansion-panel-header>
+      {{ element.title }}
+    </mat-expansion-panel-header>
+
+    <mat-list>
+      <mat-list-item fxLayout="column" fxLayoutGap="10px">
+        <label fxFlex="30%">Number</label>
+        <p fxFlex="70%">{{ element.number }}</p>
+      </mat-list-item>
+
+      <mat-list-item fxLayout="column" fxLayoutGap="10px">
+        <label fxFlex="30%">State</label>
+        <p fxFlex="70%">{{ element.state }}</p>
+      </mat-list-item>
+
+      <mat-list-item fxLayout="column" fxLayoutGap="10px">
+        <label fxFlex="30%">Created At</label>
+        <p fxFlex="70%">{{ element.created_at | date }}</p>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-action-row>
+      <button mat-raised-button color="primary">Details</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
